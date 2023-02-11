@@ -2,12 +2,10 @@
 using Bs.Data.Model.BaseModel;
 using EntityFramework.DynamicFilters;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Reflection;
 
 namespace Bs.Data.Context
 {
@@ -16,17 +14,20 @@ namespace Bs.Data.Context
     /// </summary>
     public class BsContext : DbContext
     {
-        public BsContext()
-            : base("name=EmployeeContext")
+        public BsContext() : base("name=EmployeeContext")
         {
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BsContext>());
             Configuration.LazyLoadingEnabled = true;
         }
 
         public DbSet<Department> Categories { get; set; }
+
         public DbSet<Student> Students { get; set; }
+
         public DbSet<StudentAddress> StudentAddresses { get; set; }
+
         public DbSet<Bolge> Bolgeler { get; set; }
+
         public DbSet<Personel> Personeller { get; set; }
 
         public override int SaveChanges()
